@@ -1,6 +1,7 @@
 # Academic Project Page Template
 This is an academic paper project page template.
 
+mhtippur.github.io/inairclothmanipulation
 
 Example project pages built using this template are:
 - https://horwitz.ai/probex
