@@ -1,6 +1,8 @@
-# Nerfies
+# In Air Reactive Cloth Manipulation
 
 Website for In-Air Cloth Manipulation Paper.
+
+Link at: https://mhtippur.github.io/inairclothmanip/
 
 <!-- If you find Nerfies useful for your work please cite:
 ```
