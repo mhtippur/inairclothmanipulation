@@ -262,18 +262,40 @@
       </div>
     </div>
     <!--/ Abstract. -->
+    <div style="margin-top: 3rem;"></div>
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- Simulation -->
+     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2 class="title is-3">Dataset Generation in Simulation</h2>
+        <div class="content has-text-justified">
+          <p>
+            We use <strong>Blender</strong> to simulate a wide variety of shirt geometries and deformations, generating a large RGB-D dataset (1500 scenes) for training. 
+            In addition to parameterizing the overall geometries, we incorporate <strong>hems, stitches, and sewing seams</strong> into our shirts to mimic realistic garments, enhancing visual realism 
+            and providing key features helpful for correspondence. 
+            Our method incorporates these finer details while <strong>preserving consistent vertex indexing across shirts</strong>, 
+            enabling descriptors to align with a canonical template regardless of geometry, without relying on sparse skeleton keypoints.
+          </p>
+          
+          <!-- Simulation Image -->
+      <div class="simulation-image">
+        <img src="static/images/blender_simulation_methodology.png" alt="Shirt simulation example"
+            style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px; margin-bottom: 1.5rem;">
+
+          <p>
+            Our animated simulation pipeline enables generation of a wide range of shirt types and configurations. Shown below are a few examples 
+            different simulated shirts in both hanging in-air and on-table configurations. 
+          </p>
+          
+          <div class="simulation-image">
+            <img src="static/images/example_simulated_shirts.png" alt="Shirt simulation example"
+                style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px;">
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
+    <!--/ Simulation -->
+
+
   </div>
 </section>
 
