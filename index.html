@@ -340,16 +340,25 @@
     <!--Visuotactile Grasp Affordance -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Visuotactile Grasp Affordance</h2>
+        <h2 class="title is-3">Visuotactile Grasp Affordance Network</h2>
         <div class="content has-text-justified">
           <p>
-            Training in Simulation 
+          We train a <strong>grasp affordance network to find good grasp regions of a hanging shirt </strong> using the simulated dataset. A depth image of the garment 
+          is input into the UNet archiecture implemented in <a href="#ref1">[1]</a> and a heatmap representing the graspable regions is output. 
           </p>
+          <p>By training on the simulated shirt dataset, we can explicitly check desired grasping criteria, such as <strong> (1) side grasp reachability, 
+            (2) gripper collision, and (3) whether or not two layers of fabric or less are being grasped </strong>
+          </strong></p>
           <div class="training-image">
             <img src="static/images/affordance_training_in_simulation.png" alt="Shirt simulation example"
                 style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px;">
           </div>
-          <p>More Fun INformation </p>
+          <div style="margin-top: 1rem;"></div>
+          <p> However, because there are a wide range of material properties and dynamics from varied fabrics that cannot be fully captured in simulation, 
+            we <strong>fine-tune on the robot using a tactile classifier to supervise grasp success</strong>. The visualized grasp affordance 
+            shows predictions from the model trained in simulation, and the selected grasps based on that affordance to improve efficiency of grasp selection. 
+          </p>
+          <div style="margin-top: 3rem;"></div>
             <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
               <source src="./static/videos/finetuning_grasp_affordance_website.mp4"
                 type="video/mp4">
@@ -357,9 +366,20 @@
       <h2 class="subtitle has-text-left">
       </div>
     </div>
-    <!--/ Dense Correspondence with Distributive Loss -->
+    <!--/ Visuotactile Grasp Affordance -->
 
+</div>
+<h3>References - MHT Fix the Formatting Later</h3>
+<ol>
+  <li id="ref1"> 
+    <em>Visuotactile Affordances for Cloth Manipulation with Local Control</em>. 
+    <a href="https://arxiv.org/abs/2212.05108" target="_blank" rel="noopener">
+      arXiv:1234.5678
+    </a>.
+  </li>
+</ol>
 </section>
+
 
 
 
