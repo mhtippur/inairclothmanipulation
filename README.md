@@ -2,7 +2,7 @@
 
 Website for In-Air Cloth Manipulation Paper.
 
-Link at: https://mhtippur.github.io/inairclothmanip/
+Link at: https://mhtippur.github.io/inairclothmanipulation/
 
 <!-- If you find Nerfies useful for your work please cite:
 ```
