@@ -244,6 +244,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
+
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
@@ -331,12 +332,23 @@
             to represent multiple valid matches for a pixel, <strong>capturing symmetries in the cloth</strong>, and by providing a <strong>built-in confidence metric</strong> needed to manipulate 
             garments in highly occluded states.  
           </p>
+          <p>
+            The resulting network can query points on deformed shirts and get correspondence heatmaps with respect to the canonical shirt. 
+            We can also use our descriptors in the <strong>inverse direction</strong> to query points on the canonical shirt and find correspondences on the deformed shirt. 
+            <strong>This is the direction we query in during execution on the robot.</strong>
+          </p>
+          <div class="training-image" style="margin-top: 0rem; margin-bottom: 0rem;">
+            <img src="static/images/dense_correspondence.png" alt="Shirt simulation example"
+                style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px;">
+          </div>
+        
+
       </div>
     </div>
     <!--/ Dense Correspondence with Distributive Loss -->
   </div>
 
-    <div style="margin-top: 5rem;"></div>
+  <div style="margin-top: 2rem;"></div>
     <!--Visuotactile Grasp Affordance -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
@@ -366,9 +378,33 @@
       <h2 class="subtitle has-text-left">
       </div>
     </div>
+    </div>
     <!--/ Visuotactile Grasp Affordance -->
 
-</div>
+    <div style="margin-top: 3rem;"></div>
+    <!--Combined System -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Combined System</h2>
+        <div class="content has-text-justified">
+          
+          <div style="margin-top: 0rem; margin-bottom: 3rem; text-align: center;">
+            <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
+              <source src="./static/videos/single_affordance_grasp_video_web.mp4"
+                type="video/mp4">
+            </video>
+             <p style="font-size:1em; color:#000000;">Example of the combined system chosing the best correspondence match according to the network.</p>
+          </div>
+
+          <p>
+          In order to go through the multiple steps for folding, we implement a <strong>Confidence-Aware State Machine</strong> to find the next grasps.
+          </p>
+      <h2 class="subtitle has-text-left">
+      </div>
+    </div>
+    </div>
+    <!--/ Combined System -->
+
 <h3>References - MHT Fix the Formatting Later</h3>
 <ol>
   <li id="ref1"> 
