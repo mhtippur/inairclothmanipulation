@@ -180,94 +180,38 @@
   </div>
 </section>
 
-
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<section class="section">
+<section class="section pt-3">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-
+      <div class="column is-full">
+        <div style="background-color: #f5f5f5; padding: 1.5rem; border-radius: 6px;">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Manipulating clothing is challenging due to their complex, variable configurations and frequent self-occlusion. 
-            While prior systems often rely on flattening garments, humans routinely identify keypoints in highly crumpled and suspended states. 
-            We present a novel, task-agnostic, visuotactile framework that operates directly on crumpled clothing—including in-air configurations that have not been addressed before. 
+          Manipulating clothing is challenging due to complex configurations, variable material dynamics, and frequent self-occlusion. 
+          Prior systems often flatten garments or assume visibility of key features.
+          We present a dual-arm visuotactile framework that combines confidence-aware dense visual correspondence and tactile-supervised grasp affordance to operate directly on crumpled and suspended garments. 
           </p>
           <p>
-            Our approach combines global visual perception with local tactile feedback to enable robust, reactive manipulation. We train dense visual descriptors on a custom simulated dataset using a distributional loss that captures cloth symmetries and generates correspondence confidence estimates. 
-            These estimates guide a reactive state machine that dynamically selects between folding strategies based on perceptual uncertainty. In parallel, we train a visuotactile grasp affordance network using high-resolution tactile feedback to supervise grasp success. 
-            The same tactile classifier is used during execution for real-time grasp validation. 
-            Together, these components enable a reactive, task-agnostic framework for in-air garment manipulation, including folding and hanging tasks. 
-            Moreover, our dense descriptors serve as a versatile intermediate representation for other planning modalities, such as extracting grasp targets from human video demonstrations, paving the way for more generalizable and scalable garment manipulation.
+          The correspondence model is trained on a custom, high-fidelity simulated dataset using a distributional loss that captures cloth symmetries and generates correspondence confidence estimates. 
+          These estimates guide a reactive state machine that adapts folding strategies based on perceptual uncertainty. 
+          In parallel, a visuotactile grasp affordance network, self-supervised using high-resolution tactile feedback, determines which regions are physically graspable. 
+          The same tactile classifier is used during execution for real-time grasp validation. 
+          By deferring action in low-confidence states, the system handles highly occluded table-top and in-air configurations. 
+          We demonstrate our task-agnostic grasp selection module in folding and hanging tasks. 
+          Moreover, our dense descriptors provide a reusable intermediate representation for other planning modalities, such as extracting grasp targets from human video demonstrations, paving the way for more generalizable and scalable garment manipulation.
           </p>
+          </div>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
-    <div style="margin-top: 3rem;"></div>
+    <div style="margin-top: 2rem;"></div>
 
     <!-- Simulation -->
      <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-full">
         <h2 class="title is-3">Dataset Generation in Simulation</h2>
         <div class="content has-text-justified">
           <!-- <p>
@@ -417,14 +361,14 @@
       <div style="margin-bottom: 3rem;"></div>
       <div class="columns is-centered">
         <!-- Red shortsleeve video -->
-        <div class="column is-12">
+        <div class="column is-10">
           <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
             <source src="./static/videos/tensioning_redshortsleeve_web.mp4" type="video/mp4">
           </video>
         </div>
 
         <!-- Orange longsleeve video -->
-        <div class="column is-12">
+        <div class="column is-10">
           <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
             <source src="./static/videos/tensioning_orangelongsleeve_web.mp4" type="video/mp4">
           </video>
@@ -480,14 +424,14 @@
       <div style="margin-bottom: 3rem;"></div>
       <div class="columns is-centered">
         <!-- Red shortsleeve video -->
-        <div class="column is-12">
+        <div class="column is-10">
           <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
             <source src="./static/videos/longsleeve_white_sweater_hanging_web.mp4" type="video/mp4">
           </video>
         </div>
 
         <!-- Orange longsleeve video -->
-        <div class="column is-12">
+        <div class="column is-10">
           <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
             <source src="./static/videos/green_sweater_hanging_web.mp4" type="video/mp4">
           </video>
