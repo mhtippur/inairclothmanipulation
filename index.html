@@ -168,7 +168,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
+      <video id="teaser" autoplay muted loop playsinline height="100%"  preload="metadata">
         <source src="./static/videos/teaser_video.mp4"
                 type="video/mp4">
       </video>
@@ -317,7 +317,7 @@
             shows predictions from the model trained in simulation, and the selected grasps based on that affordance to improve efficiency of grasp selection.
           </p>
           <div style="margin-top: 3rem;">
-            <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
+            <video id="affordance_finetuning" autoplay muted loop playsinline controls preload="metadata" height="100%"> 
               <source src="./static/videos/finetuning_grasp_affordance_website.mp4"
                 type="video/mp4">
             </video>
@@ -349,7 +349,7 @@
             </p>
           
           <div style="margin-top: 1rem; margin-bottom: 3rem;">
-            <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
+            <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%" preload="metadata"> 
               <source src="./static/videos/single_affordance_grasp_video_web.mp4"
                 type="video/mp4">
             </video>
@@ -384,7 +384,7 @@
           </p>
 
             <div style="margin-top: 0rem; margin-bottom: 3rem;">
-            <video id="affordance_finetuning" autoplay muted playsinline height="100%"> 
+            <video id="affordance_finetuning" autoplay muted playsinline height="100%" preload="metadata"> 
               <source src="./static/videos/confidence_aware_state_machine_web.mp4"
                 type="video/mp4">
             </video>
@@ -405,14 +405,14 @@
       <div class="columns is-centered">
         <!-- Red shortsleeve video -->
         <div class="column is-8">
-          <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
+          <video autoplay controls muted playsinline preload="metadata" style="width:100%; height:auto; display:block;">
             <source src="./static/videos/tensioning_redshortsleeve_web.mp4" type="video/mp4">
           </video>
         </div>
 
         <!-- Orange longsleeve video -->
         <div class="column is-8">
-          <video autoplay controls muted playsinline style="width:100%; height:auto; display:block;">
+          <video autoplay controls muted playsinline preload="metadata" style="width:100%; height:auto; display:block;">
             <source src="./static/videos/tensioning_orangelongsleeve_web.mp4" type="video/mp4">
           </video>
         </div>
