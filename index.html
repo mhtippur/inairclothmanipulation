@@ -240,6 +240,7 @@
           <div class="example-shirts-image">
             <img src="static/images/example_simulated_shirts.png" alt="Shirt simulation example"
                 style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px;">
+                <p style="font-size:1em; color:#000000; text-align:center"><i>Example shirts simulated in Blender.</i>
         </div>
       </div>
     </div>
@@ -300,22 +301,22 @@
         <div class="content has-text-justified">
           <p>
           We train a <strong>grasp affordance network to find good grasp regions of a hanging shirt </strong> using the simulated dataset. A depth image of the garment 
-          is input into the UNet archiecture implemented in <a href="#ref1">[1]</a> and a heatmap representing the graspable regions is output. 
+          is input into the UNet archiecture implemented in <a href="https://arxiv.org/abs/2212.05108">[1]</a> and a heatmap representing the graspable regions is output. 
           </p>
           <p>By training on the simulated shirt dataset, we can explicitly check desired grasping criteria, such as <strong> (1) side grasp reachability, 
-            (2) gripper collision, and (3) whether or not two layers of fabric or less are being grasped </strong>
+            (2) gripper collision, and (3) whether or not two layers of fabric or less are being grasped. </strong>
           </strong></p>
           <div class="training-image">
             <img src="static/images/affordance_training_in_simulation.png" alt="Shirt simulation example"
-                style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px;">
+                style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px; ">
+              <p style="font-size:1em; color:#000000; text-align:center"><i>Visuotactile grasp affordance training in simulation.</i>
           </div>
           <div style="margin-top: 1rem;"></div>
           <p> However, because there are a wide range of material properties and dynamics from varied fabrics that cannot be fully captured in simulation, 
             we <strong>fine-tune on the robot using a tactile classifier to supervise grasp success</strong>. The visualized grasp affordance 
             shows predictions from the model trained in simulation, and the selected grasps based on that affordance to improve efficiency of grasp selection.
-            We repeat the process (shown in the video below) for a range of shirt types to capture a range of material properties and dynamics.   
           </p>
-          <div style="margin-top: 3rem; text-align: center;">
+          <div style="margin-top: 3rem;">
             <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
               <source src="./static/videos/finetuning_grasp_affordance_website.mp4"
                 type="video/mp4">
@@ -331,39 +332,76 @@
     <!--/ Visuotactile Grasp Affordance -->
 
     <div style="margin-top: 3rem;"></div>
-    <!--Combined System -->
+    <!--In-Air Garment Manipulation-->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
         <h2 class="title is-3">In Air-Garment Manipulation</h2>
         <div class="content has-text-justified">
+            <p>By <strong>combining confidence-aware dense visual correspondence and a visuotactile grasp affordance network</strong>, 
+            our system can <strong>defer action in low confidence states</strong>, 
+            allowing us to handle highly occluded table-top and in-air configurations. </p>
+
+            <p>
+            In the single-grasp example below, a point on the end of the sleeve is queried on the canonical shirt. 
+            The system starts with a relatively bad affordance for the sleeve since the surface normal is not aligned with the gripper. 
+            As the shirt is rotates, the sleeve moves to a better position for grasping, and the network becomes more confident that the point is indeed a sleeve. 
+            Once a high correspondence point has a good affordance, the robot attempts to grasp the desired point. 
+            </p>
           
-          <div style="margin-top: 0rem; margin-bottom: 3rem; text-align: center;">
+          <div style="margin-top: 1rem; margin-bottom: 3rem;">
             <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
               <source src="./static/videos/single_affordance_grasp_video_web.mp4"
                 type="video/mp4">
             </video>
-             <p style="font-size:1em; color:#000000;">Example of the combined system chosing the best correspondence match according to the network.</p>
+             <p style="font-size:1em; color:#000000;"><i>Example of robot deferring grasp action until the queried point (end of the sleeve) has a high enough correspondence match 
+              and visuotactile grasp affordance. </i></p>
+
           </div>
 
+          <p>We evaluate grasping performance across four garment categories <strong>(sleeve, bottom, shoulder, and collar)</strong> using two different correspondence networks: 
+            one trained solely on suspended shirts and another on a combined table and  suspended dataset. For each category, we perform <strong>10 grasp attempts</strong> per network, 
+            recording outcomes as succes, failure, or below confidence threshold. Failures are further categorized as correspondence errors or affordance errors.
+           
+          </p>
+          <div class="training-image">
+            <img src="static/images/results_table_web.png" alt="Shirt simulation example"
+                style="max-width:100%; height:auto; margin-top:1.5rem; border-radius:8px; margin-bottom: 1rem;">
+          </div>
+
+          <h2 class="title is-3" style="text-align:center;">
+            Confidence-Based State Machine
+          </h2>
           <p>
-          In order to go through the multiple steps for folding, we implement a <strong>Confidence-Aware State Machine</strong> to find the next grasps.
+          This system enables reactive in-air folding by dynamically selecting grasp points based on real-time confidence estimates and recovery failures using tactile reactivity. 
+          <strong>A Confidence-Based State Machine </strong> is implemented to guide the folding task by picking the next highest-confidence action. 
+          </p>
+          <p>
+            The system starts by picking the shirt up from the table, looking for correspondence regions above a confidence threshold. At each grasp attempt, the robot can <strong>query from three canonical regions (shoulder, sleeve, bottom) 
+            </strong>using the distributional dense correspondence network to generate confidence-weighted heatmaps. 
+            A grasp is executed <strong>only if both the correspondence confidence and grasp affordance exceed predefined thresholds.</strong> 
+            Otherwise, the robot rotates the garment and reevaluates, ensuring robust grasp point selection across the four folding strategies. 
+            
           </p>
 
-            <div style="margin-top: 0rem; margin-bottom: 3rem; text-align: center;">
+            <div style="margin-top: 0rem; margin-bottom: 3rem;">
             <video id="affordance_finetuning" autoplay muted playsinline height="100%"> 
               <source src="./static/videos/confidence_aware_state_machine_web.mp4"
                 type="video/mp4">
             </video>
-             <p style="font-size:1em; color:#000000;">Confidence-Aware State Machine</p>
+             <p style="font-size:1em; color:#000000;"><i>A confidence-based state machine enables reactive in-air folding by dynamically selecting grasp points based on real-time confidence estimates and recovery failures using tactile reactivity. </i></p>
           </div>
       <h2 class="subtitle has-text-left">
       </div>
       
       <div style="margin-top: 3rem;"></div>
 
-      <p class="has-text-left"></p>
 
-      <div style="margin-bottom: 3rem;"></div>
+      <h2 class="title is-4">Tensioning</h2>
+      <p class="has-text-left">
+      Once the shirt is grasped by two keypoints, the robot <strong>tensions</strong> the shirt by <strong>detecting shear via the average marker displacement</strong> on the tactile sensors. 
+      Below we show examples of the shirt tensioning step on two different types of shirts.  
+      </p>
+      <div style="margin-bottom: 1rem;"></div>
       <div class="columns is-centered">
         <!-- Red shortsleeve video -->
         <div class="column is-8">
@@ -381,7 +419,7 @@
       </div>
 
 
-    <div style="margin-top: 2rem;"></div>
+    <div style="margin-top: 3rem;"></div>
     <!--Folding -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
@@ -391,13 +429,27 @@
          
           <div style="margin-top: 1rem;"></div>
           <p>
+          Our confidence-aware state machine was able to <strong>successfully</strong> fold the shirts for <strong>6 out of the 10 trials</strong>.
+          Of the 30 total grasps attempted during the course of the 10 folding trials, 
+          6 were empty grasps successfully caught by the tactile classifier, immediately triggering recovery behaviors, 
+          further demonstrating the usefulness of tactile feedback in the folding pipeline. 
           </p>
-          <div style="margin-top: 3rem;"></div>
+          <p>
+            Of the 4 unsuccessful folding trials, <strong>irrecoverable failure modes included correspondence failures (1 trial), grabbing too much fabric (1 trial), and grabbing diagonally across the shirt (2 trials). </strong>
+            (See Appendix 7.2 for for visualizations of these failure modes.) 
+          </p>
+          <p>
+            Furthermore, <strong>without affordance fine-tuning the folding success rate dropped to 3 out of 10 trials </strong>, with an increase in cases of grabbing too much fabric caused by poor affordance, rather than poor correspondence. 
+          </p>
+          
+          <div style="margin-top: 1rem; margin-bottom: 0 rem; ">
             <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
               <source src="./static/videos/example_single_folding_web.mp4"
                 type="video/mp4">
             </video>
-
+            <p style="font-size:1em; color:#000000;"><i>Example of a successful folding trial, showing the system step through the 
+              confidence-based state machine using both the correspondence and affordance networks  </i></p>
+          </div>
           <div style="margin-top: 1rem;"></div>
           <p>
           </p>
@@ -406,6 +458,10 @@
               <source src="./static/videos/folding_multi_grid_web.mp4"
                 type="video/mp4">
             </video>
+            <p style="font-size:1em; color:#000000;"><i>Compilation of other successful folding demos, showing a variety of shirt geometries (including 
+              longsleeve shirts), materials thicknesses, and dynamics. Different folding strategies, as well as grasps beign attemped and the tactile 
+              classifier informing the robot to try again are also demonstrated. 
+            </i></p>
       <h2 class="subtitle has-text-left">
       </div>
     </div>
@@ -413,20 +469,26 @@
     <!--/ Folding -->
 
 
-        <div style="margin-top: 2rem;"></div>
+    <div style="margin-top: 2rem;"></div>
     <!--Hanging -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
         <h2 class="title is-3">Hanging Shirts</h2>
         <div class="content has-text-justified">
-         
-         
           <div style="margin-top: 1rem;"></div>
-          <p> </p>
+          <p> The task-agnostic grasp selection module can be applied to hanging tasks as well. 
+            To perform the hanging task, <strong>collar or shoulder points</strong> are queried from the table and in the air. 
+            After securing both grasps, the robot moves open-loop to a peg.
+          </p>
+          <p>
+            Our hanging system was successful in <strong>7 out of 10 trials</strong>, where success is evaluated based on grasping the correct regions and whether the cloth stays on the peg.
+            All 3 failures were attributed to correspondence errors. 
+            Example successful folding videos are shown below. 
+          </p>
           
       
 
-      <div style="margin-bottom: 3rem;"></div>
+      <div style="margin-bottom: 0rem;"></div>
       <div class="columns is-centered">
         <!-- Red shortsleeve video -->
         <div class="column is-8">
@@ -473,7 +535,18 @@
 </section>
 
 
-
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{sunil2025reactiveinairclothingmanipulation,
+      title={Reactive In-Air Clothing Manipulation with Confidence-Aware Dense Correspondence and Visuotactile Affordance}, 
+      author={Neha Sunil and Megha Tippur and Arnau Saumell and Edward Adelson and Alberto Rodriguez},
+      year={2025},
+      url={https://arxiv.org/abs/2509.03889}, 
+}
+</code></pre>
+  </div>
+</section>
 
 
 
