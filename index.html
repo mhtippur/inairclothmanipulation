@@ -321,7 +321,7 @@
               <source src="./static/videos/finetuning_grasp_affordance_website.mp4"
                 type="video/mp4">
             </video>
-             <p style="font-size:1em; color:#000000;"><i>We repeat this fine-tuning processing for a range of shirt types to capture a range of material properties
+             <p style="font-size:1em; color:#000000; text-align: center;"><i>We repeat this fine-tuning processing for a range of shirt types to capture a range of material properties
               and dynamics.</i>
              </p>
              </div>
@@ -344,7 +344,7 @@
             <p>
             In the single-grasp example below, a point on the end of the sleeve is queried on the canonical shirt. 
             The system starts with a relatively bad affordance for the sleeve since the surface normal is not aligned with the gripper. 
-            As the shirt is rotates, the sleeve moves to a better position for grasping, and the network becomes more confident that the point is indeed a sleeve. 
+            As the shirt rotates, the sleeve moves to a better position for grasping, and the network becomes more confident that the point is indeed a sleeve. 
             Once a high correspondence point has a good affordance, the robot attempts to grasp the desired point. 
             </p>
           
@@ -439,7 +439,7 @@
             (See Appendix 7.2 for for visualizations of these failure modes.) 
           </p>
           <p>
-            Furthermore, <strong>without affordance fine-tuning the folding success rate dropped to 3 out of 10 trials </strong>, with an increase in cases of grabbing too much fabric caused by poor affordance, rather than poor correspondence. 
+            Furthermore, <strong>without affordance fine-tuning, the folding success rate dropped to 3 out of 10 trials </strong>, with an increase in cases of grabbing too much fabric caused by poor affordance, rather than poor correspondence. 
           </p>
           
           <div style="margin-top: 1rem; margin-bottom: 0 rem; ">
@@ -459,7 +459,7 @@
                 type="video/mp4">
             </video>
             <p style="font-size:1em; color:#000000;"><i>Compilation of other successful folding demos, showing a variety of shirt geometries (including 
-              longsleeve shirts), materials thicknesses, and dynamics. Different folding strategies, as well as grasps beign attemped and the tactile 
+              longsleeve shirts), materials thicknesses, and dynamics. Different folding strategies, as well as grasps being re-attemped, and the tactile 
               classifier informing the robot to try again are also demonstrated. 
             </i></p>
       <h2 class="subtitle has-text-left">
@@ -482,8 +482,8 @@
           </p>
           <p>
             Our hanging system was successful in <strong>7 out of 10 trials</strong>, where success is evaluated based on grasping the correct regions and whether the cloth stays on the peg.
-            All 3 failures were attributed to correspondence errors. 
-            Example successful folding videos are shown below. 
+            <bold>All 3 failures were attributed to correspondence errors.</bold>
+            Example successful hanging videos are shown below. 
           </p>
           
       
