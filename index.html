@@ -119,7 +119,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://mhtippur.github.io/inairclothmanipulation/"
+                <a href="http://arxiv.org/abs/2509.03889"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -173,8 +173,8 @@
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-left">
-        <strong>Overview:</strong> We develop a visuotactile system capable of folding and hanging in-air using 
-        dense visual representations and tactilely-supervised visual affordance networks.
+        <i><strong>Overview:</strong> We develop a visuotactile system capable of folding and hanging in-air using 
+        dense visual representations and tactilely-supervised visual affordance networks.</i>
       </h2>
     </div>
   </div>
@@ -312,13 +312,18 @@
           <div style="margin-top: 1rem;"></div>
           <p> However, because there are a wide range of material properties and dynamics from varied fabrics that cannot be fully captured in simulation, 
             we <strong>fine-tune on the robot using a tactile classifier to supervise grasp success</strong>. The visualized grasp affordance 
-            shows predictions from the model trained in simulation, and the selected grasps based on that affordance to improve efficiency of grasp selection. 
+            shows predictions from the model trained in simulation, and the selected grasps based on that affordance to improve efficiency of grasp selection.
+            We repeat the process (shown in the video below) for a range of shirt types to capture a range of material properties and dynamics.   
           </p>
-          <div style="margin-top: 3rem;"></div>
+          <div style="margin-top: 3rem; text-align: center;">
             <video id="affordance_finetuning" autoplay muted loop playsinline controls height="100%"> 
               <source src="./static/videos/finetuning_grasp_affordance_website.mp4"
                 type="video/mp4">
             </video>
+             <p style="font-size:1em; color:#000000;"><i>We repeat this fine-tuning processing for a range of shirt types to capture a range of material properties
+              and dynamics.</i>
+             </p>
+             </div>
       <h2 class="subtitle has-text-left">
       </div>
     </div>
@@ -329,7 +334,7 @@
     <!--Combined System -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Combined System</h2>
+        <h2 class="title is-3">In Air-Garment Manipulation</h2>
         <div class="content has-text-justified">
           
           <div style="margin-top: 0rem; margin-bottom: 3rem; text-align: center;">
